@@ -108,13 +108,13 @@ public class Customerin extends javax.swing.JFrame {
         jToggleButton2.setText("2");
 
         buttonGroup2.add(jToggleButton3);
-        jToggleButton3.setText("1\n");
+        jToggleButton3.setText("3");
 
         buttonGroup2.add(jToggleButton4);
-        jToggleButton4.setText("1\n");
+        jToggleButton4.setText("4");
 
         buttonGroup2.add(jToggleButton5);
-        jToggleButton5.setText("1\n");
+        jToggleButton5.setText("5");
         jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton5ActionPerformed(evt);
@@ -122,97 +122,97 @@ public class Customerin extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(jToggleButton6);
-        jToggleButton6.setText("1\n");
+        jToggleButton6.setText("6");
 
         buttonGroup2.add(jToggleButton7);
-        jToggleButton7.setText("1\n");
+        jToggleButton7.setText("7");
 
         buttonGroup2.add(jToggleButton8);
-        jToggleButton8.setText("1\n");
+        jToggleButton8.setText("8");
 
         buttonGroup2.add(jToggleButton9);
-        jToggleButton9.setText("1\n");
+        jToggleButton9.setText("9");
 
         buttonGroup2.add(jToggleButton10);
-        jToggleButton10.setText("1\n");
+        jToggleButton10.setText("10");
 
         buttonGroup2.add(jToggleButton11);
-        jToggleButton11.setText("1\n");
+        jToggleButton11.setText("11");
 
         buttonGroup2.add(jToggleButton12);
-        jToggleButton12.setText("1\n");
+        jToggleButton12.setText("12");
 
         buttonGroup2.add(jToggleButton13);
-        jToggleButton13.setText("1\n");
+        jToggleButton13.setText("13");
 
         buttonGroup2.add(jToggleButton14);
-        jToggleButton14.setText("1\n");
+        jToggleButton14.setText("14");
 
         buttonGroup2.add(jToggleButton15);
-        jToggleButton15.setText("1\n");
+        jToggleButton15.setText("17");
 
         buttonGroup2.add(jToggleButton16);
-        jToggleButton16.setText("1\n");
+        jToggleButton16.setText("16");
 
         buttonGroup2.add(jToggleButton17);
-        jToggleButton17.setText("1\n");
+        jToggleButton17.setText("15");
 
         buttonGroup2.add(jToggleButton18);
-        jToggleButton18.setText("1\n");
+        jToggleButton18.setText("18");
 
         buttonGroup2.add(jToggleButton19);
-        jToggleButton19.setText("1\n");
+        jToggleButton19.setText("19");
 
         buttonGroup2.add(jToggleButton20);
-        jToggleButton20.setText("1\n");
+        jToggleButton20.setText("20");
 
         buttonGroup2.add(jToggleButton21);
-        jToggleButton21.setText("1\n");
+        jToggleButton21.setText("21");
 
         buttonGroup2.add(jToggleButton22);
-        jToggleButton22.setText("1\n");
+        jToggleButton22.setText("22");
 
         buttonGroup2.add(jToggleButton23);
-        jToggleButton23.setText("1\n");
+        jToggleButton23.setText("23");
 
         buttonGroup2.add(jToggleButton24);
-        jToggleButton24.setText("1\n");
+        jToggleButton24.setText("24");
 
         buttonGroup2.add(jToggleButton25);
-        jToggleButton25.setText("1\n");
+        jToggleButton25.setText("25");
 
         buttonGroup2.add(jToggleButton26);
-        jToggleButton26.setText("1\n");
+        jToggleButton26.setText("26");
 
         buttonGroup2.add(jToggleButton27);
-        jToggleButton27.setText("1\n");
+        jToggleButton27.setText("27");
 
         buttonGroup2.add(jToggleButton28);
-        jToggleButton28.setText("1\n");
+        jToggleButton28.setText("28");
 
         buttonGroup2.add(jToggleButton29);
-        jToggleButton29.setText("1\n");
+        jToggleButton29.setText("29");
 
         buttonGroup2.add(jToggleButton30);
-        jToggleButton30.setText("1\n");
+        jToggleButton30.setText("30");
 
         buttonGroup2.add(jToggleButton31);
-        jToggleButton31.setText("1\n");
+        jToggleButton31.setText("31");
 
         buttonGroup2.add(jToggleButton32);
-        jToggleButton32.setText("1\n");
+        jToggleButton32.setText("32");
 
         buttonGroup2.add(jToggleButton33);
-        jToggleButton33.setText("1\n");
+        jToggleButton33.setText("33");
 
         buttonGroup2.add(jToggleButton34);
-        jToggleButton34.setText("1\n");
+        jToggleButton34.setText("35");
 
         buttonGroup2.add(jToggleButton35);
-        jToggleButton35.setText("1\n");
+        jToggleButton35.setText("34");
 
         buttonGroup2.add(jToggleButton36);
-        jToggleButton36.setText("1\n");
+        jToggleButton36.setText("36");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -385,12 +385,12 @@ public class Customerin extends javax.swing.JFrame {
                             .addComponent(jToggleButton23)
                             .addComponent(jToggleButton29)
                             .addComponent(jToggleButton34))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 7, Short.MAX_VALUE)
+                                .addGap(0, 17, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jToggleButton6)
                                     .addComponent(jToggleButton12)
@@ -398,7 +398,7 @@ public class Customerin extends javax.swing.JFrame {
                                     .addComponent(jToggleButton24)
                                     .addComponent(jToggleButton30)
                                     .addComponent(jToggleButton36))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
