@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author jghibiki
  */
-public class UserDataBase {
+public class UserDataBase implements Serializable{
 	ArrayList<RegisteredUser> users ;
 	
 	public UserDataBase()
