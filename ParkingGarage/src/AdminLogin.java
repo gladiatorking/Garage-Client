@@ -71,8 +71,8 @@ public class AdminLogin extends javax.swing.JFrame {
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(69, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -84,7 +84,7 @@ public class AdminLogin extends javax.swing.JFrame {
                                         .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addComponent(loginButton)
-                                .addGap(63, 63, 63))
+                                .addContainerGap(97, Short.MAX_VALUE))
                 );
 
                 pack();

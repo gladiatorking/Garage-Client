@@ -13,7 +13,7 @@
  *
  * @author jghibiki
  */
-public class ServerMain extends Interfacing{
+public class Startup extends Interfacing{
 	public static void main(String [ ] args)
 	{
 
@@ -74,16 +74,16 @@ public class ServerMain extends Interfacing{
 
         //if user logs in sucessfully, spawn the Admin interface.
         //  Else, notify user of error and try again.
-        Admin af = new Admin();
-		af.setVisible(true);
+        ClientInterfaceStartUp intf = new ClientInterfaceStartUp();
+		intf.setVisible(true);
 	
 	while(endSession== false)
 	{
 		;
 	}
         //when user exits form, hide the form. and mark for garbage collection
-        af.setVisible(false);
-        af = null;
+        intf.setVisible(false);
+        intf = null;
 
 
         return exit;
