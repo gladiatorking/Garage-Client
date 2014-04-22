@@ -1,4 +1,4 @@
-package Client;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,12 +10,12 @@ package Client;
  *
  * @author fokken
  */
-public class SignUpMessage extends javax.swing.JFrame {
+public class StartUp extends javax.swing.JFrame {
 
     /**
      * Creates new form Sign_up_From
      */
-    public SignUpMessage() {
+    public StartUp() {
         initComponents();
     }
 
@@ -71,20 +71,20 @@ public class SignUpMessage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUpMessage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUpMessage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUpMessage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUpMessage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SignUpMessage().setVisible(true);
+                new StartUp().setVisible(true);
             }
         });
     }
