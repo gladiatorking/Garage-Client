@@ -38,6 +38,12 @@ public class AdminLogin extends javax.swing.JFrame {
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+                empID.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                empIDActionPerformed(evt);
+                        }
+                });
+
                 jLabel1.setText("Employee ID:");
 
                 pass.setToolTipText("");
@@ -45,6 +51,11 @@ public class AdminLogin extends javax.swing.JFrame {
                 jLabel2.setText("Password:");
 
                 loginButton.setText("Log In");
+                loginButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                loginButtonActionPerformed(evt);
+                        }
+                });
 
                 jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
                 jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -108,6 +119,22 @@ public class AdminLogin extends javax.swing.JFrame {
                 // TODO add your handling code here:
 		this.setVisible(false);
         }//GEN-LAST:event_jButton1ActionPerformed
+
+        private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+                // TODO add your handling code here:
+		
+		if(empID.getText().equals("1234"))
+		{
+			if(pass.getText().equals("4321"))
+			{
+				
+			}
+		}
+        }//GEN-LAST:event_loginButtonActionPerformed
+
+        private void empIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empIDActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_empIDActionPerformed
 
 	/**
 	 * @param args the command line arguments

@@ -14,23 +14,20 @@ import java.util.Calendar;
  * @author fokken
  */
 public class Garage implements Serializable {
-    private ArrayList<ParkingSession> notAvailable;
-   private ArrayList<ParkingSession> Reservation;
- 
-    public Garage() {
-        this.notAvailable = new ArrayList<ParkingSession>();
-        this.Reservation = new ArrayList<ParkingSession>();
-    }
+    private int maxSpots;
+    private ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
+    private ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
+    
     public boolean spotCheck(ParkingSession newspot)
     {
-        for(ParkingSession a : notAvailable)
+        for(ParkingSession a : NotAvailable)
         {
             if(a.getSpot() == newspot.getSpot())
             {
                 return false;
             }
         }
-        for(ParkingSession b : Reservation)
+        for(ParkingSession b : Reserved)
         {
             if(b.getSpot() == newspot.getSpot()&& b.getFinishtime()> newspot.getStartingtime()
                     && b.getStartingtime()< newspot.getStartingtime())
@@ -41,25 +38,33 @@ public class Garage implements Serializable {
         return true;
         
     }
+    
+    
     public boolean addCurrentSpot(ParkingSession newspot)
     {
         if(spotCheck(newspot))
         {
-            notAvailable.add(newspot);
+            NotAvailable.add(newspot.getSpot()-1, newspot);
             return true;
         }
       return false;      
     }
-    public boolean reservationcheck(){
+    
+    
+    public boolean reservationcheck()
+    {
         
     }
-    public boolean addReservation(ParkingSession newReservation){
+    public boolean addReserved(ParkingSession newReserved)
+    {
         if(reservationcheck())
         {
             
         }
-        }
-    public boolean removeReservation(ParkingSession res)
+    }
+    
+    
+    public boolean removeReserved(ParkingSession res)
     {
         Calendar current = Calendar.getInstance();
         if(res.getStartingtime()< (current.getTimeInMillis() *(1/3600000)+24))
@@ -68,15 +73,68 @@ public class Garage implements Serializable {
                 }
         else
         {
-            for(ParkingSession a: Reservation)
+            for(ParkingSession a: Reserved)
             {
                 if(res.equals(a))
                 {
-                    Reservation.remove(a);
+                    Reserved.remove(a);
                     return true;
                 }
             }
         }
         return false;
+    }
+    
+    
+    public int[] getAvailableSpots()
+    {
+	    //NotAvailable
+	    //Reserved
+	    
+	    //int[] temp = new int[maxSpots];
+	    //for(int i=0; i<maxSpots; i++)
+	    //{
+		//    temp[i] = i;
+	    //}
+	    int counter1 = 0;
+	    for(int i=0; i<Reserved.size(); i++)
+	    {
+		 if(Reserved.get(i) != null)
+		 {
+			 counter1++;
+		 }
+	    }
+	    
+	    int counter2 = 0;
+	    for(int i=0; i<NotAvailable.size(); i++)
+	    {
+		 if(NotAvailable.get(i) != null)
+		 {
+			 counter2++;
+		 }
+	    }
+	    
+	    int counter3 = counter1 + counter2;
+	    int pointer = 0;
+	    
+	    int[] temp = new int[counter3];
+	    
+	    for(int i=0; i<Reserved.size(); i++)
+	    {
+		 if(Reserved.get(i) != null)
+		 {
+			 temp[pointer++] = Reserved.get(i).getSpot();
+		 }
+	    }
+	    
+	    for(int i=0; i<NotAvailable.size(); i++)
+	    {
+		 if(NotAvailable.get(i) != null)
+		 {
+			 temp[pointer++] = NotAvailable.get(i).getSpot();
+		 }
+	    }
+	    
+	return temp; 
     }
 }
