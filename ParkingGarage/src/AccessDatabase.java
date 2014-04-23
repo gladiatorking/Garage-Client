@@ -27,6 +27,7 @@ public class AccessDatabase {
 			try
 			{
 				ois.writeObject(new UserDataBase());
+				ois.close();
 			}
 			catch(Exception e)
 			{
@@ -68,7 +69,9 @@ public class AccessDatabase {
 			
 			try
 			{
-				return (UserDataBase) ois.readObject();
+				UserDataBase udb = (UserDataBase) ois.readObject();
+				ois.close();
+				return udb;
 			}
 			catch(Exception e)
 			{
@@ -95,6 +98,7 @@ public class AccessDatabase {
 			try
 			{
 				ois.writeObject(udb);
+				ois.close();
 			}
 			catch(Exception e)
 			{

@@ -13,15 +13,54 @@ import java.io.Serializable;
  */
 public class UserDataBase implements Serializable{
 	
-	private ArrayList<RegisteredUser> users ;
+	public ArrayList<RegisteredUser> users ;
 	public UserDataBase()
 	{
 		users = new ArrayList<>();
 	}
 	
-	public void addUser(String fname, String lname, String password, String email, String plateNumber, String username)
+	public void addUser(
+		String fname, 
+		String lname, 
+		String creditCard,
+		String securityCode,
+		String expirationDate,
+		String address,
+		String city,
+		String state,
+		String zipCode,
+		
+		
+		String username,
+		String password, 
+		String email, 
+		
+		String make,
+		String model,
+		String plateNumber
+		
+	)
 	{
-		users.add(new RegisteredUser(fname, lname, password, email, plateNumber, username));
+		users.add(new RegisteredUser(
+			fname, 
+			lname, 
+			creditCard,
+			securityCode,
+			expirationDate,
+			address,
+			city,
+			state,
+			zipCode,
+			
+			
+			username,
+			password, 
+			email, 
+			
+			make,
+			model,
+			plateNumber	
+		));
 		
 	}
 }

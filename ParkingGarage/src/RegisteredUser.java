@@ -12,13 +12,52 @@ public class RegisteredUser extends Users{
 	private String email;
 	private String plateNumber;
 	public String username;
+	private String creditCard;
+	private String securityCode;
+	private String expirationDate;
+	private String address;
+	private String city;
+	private String state;
+	private String zipCode;
+	private String make;
+	private String model;
 	
-	public RegisteredUser(String fname, String lname, String password, String email, String plateNumber, String username)
+	public RegisteredUser(
+		String fname, 
+		String lname, 
+		String creditCard,
+		String securityCode,
+		String expirationDate,
+		String address,
+		String city,
+		String state,
+		String zipCode,
+		
+		
+		String username,
+		String password, 
+		String email, 
+		
+		String make,
+		String model,
+		String plateNumber
+	)
 	{
 		super(fname, lname, password);
 		this.email = email;
 		this.plateNumber = plateNumber;
 		this.username = username;
+		
+
+		this.creditCard = creditCard;
+		this.securityCode = securityCode;
+		this.expirationDate = expirationDate;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		
+		this.make = make;
+		this.model = model;
 	}
 	
 	public String getEmail()
