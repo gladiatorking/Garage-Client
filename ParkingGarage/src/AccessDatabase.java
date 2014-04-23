@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author jghibiki
  */
-public class AcessDatabase {
+public class AccessDatabase {
 	static String garagedbLc = "garage.db";
 	static String userdbLc = "user.db";
 	
@@ -106,4 +106,5 @@ public class AcessDatabase {
 			System.err.println("Error prepping the file output stream.\n" + e);
 		}
 	}
+	
 }

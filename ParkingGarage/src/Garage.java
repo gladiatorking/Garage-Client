@@ -53,13 +53,13 @@ public class Garage implements Serializable {
     
     public boolean reservationcheck()
     {
-        
+        return true; //added return to temporarily remove error
     }
-    public boolean addReserved(ParkingSession newReserved)
+    public boolean addReserved(ParkingSession newReservation)
     {
         if(reservationcheck())
         {
-            Reservation.add(newReservation);
+            Reserved.add(newReservation);
             return true;
         }
         else
@@ -90,7 +90,7 @@ public class Garage implements Serializable {
     
 	public boolean makeAvailable(ParkingSession newSpot)
 	{
-
+		return true; //to hide errror
 	}
     
     public int[] getAvailableSpots()

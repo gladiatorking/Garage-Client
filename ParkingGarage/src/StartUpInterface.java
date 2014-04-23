@@ -147,7 +147,7 @@ public class StartUpInterface extends javax.swing.JFrame {
         //</editor-fold>
 	
 	/* Create database files */
-	AcessDatabase.InitDBs();
+	AccessDatabase.InitDBs();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

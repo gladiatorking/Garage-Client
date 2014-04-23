@@ -127,7 +127,7 @@ public class AdminLogin extends javax.swing.JFrame {
 		{
 			if(pass.getText().equals("4321"))
 			{
-				
+				(new Admin()).setVisible(false);
 			}
 		}
         }//GEN-LAST:event_loginButtonActionPerformed

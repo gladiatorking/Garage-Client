@@ -11,7 +11,7 @@
 public class RegisteredUser extends Users{
 	private String email;
 	private String plateNumber;
-	private String username;
+	public String username;
 	
 	public RegisteredUser(String fname, String lname, String password, String email, String plateNumber, String username)
 	{

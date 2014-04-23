@@ -12,8 +12,8 @@ import java.io.Serializable;
  * @author jghibiki
  */
 public class UserDataBase implements Serializable{
-	ArrayList<RegisteredUser> users ;
 	
+	private ArrayList<RegisteredUser> users ;
 	public UserDataBase()
 	{
 		users = new ArrayList<>();
@@ -22,6 +22,7 @@ public class UserDataBase implements Serializable{
 	public void addUser(String fname, String lname, String password, String email, String plateNumber, String username)
 	{
 		users.add(new RegisteredUser(fname, lname, password, email, plateNumber, username));
+		
 	}
 }
 
