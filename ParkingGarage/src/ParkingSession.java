@@ -44,6 +44,10 @@ public class ParkingSession {
     {
         spot = newspot;
     }
+    public int getSpot()
+    {
+        return spot;
+    }
     public void setStartingtime(int newStarttime)
     {
         starttime= newStarttime;
