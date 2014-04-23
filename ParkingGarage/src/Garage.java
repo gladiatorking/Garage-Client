@@ -50,13 +50,18 @@ public class Garage implements Serializable {
         }
       return false;      
     }
-    public boolean reservationcheck(){
+    public boolean reservationcheck(ParkingSession newspot){
         
     }
     public boolean addReservation(ParkingSession newReservation){
         if(reservationcheck())
         {
-            
+            Reservation.add(newReservation);
+            return true;
+        }
+        else
+        {
+            return false;
         }
         }
     public boolean removeReservation(ParkingSession res)
@@ -78,5 +83,9 @@ public class Garage implements Serializable {
             }
         }
         return false;
+    }
+    public boolean makeAvailable(ParkingSession newSpot)
+    {
+        
     }
 }
