@@ -151,7 +151,7 @@ public class Garage implements Serializable {
                          now.getTimeInMillis()*(1/60000))
                          && (Reserved.get(i).getFinishtime().getTimeInMillis()> now.getTimeInMillis() ))
 		 {
-			 counter1++;
+			 temp[pointer++] = NotAvailable.get(i).getSpot();
 		 }
 	    }
 	    

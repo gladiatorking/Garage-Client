@@ -1,6 +1,7 @@
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Locale;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -99,8 +100,8 @@ public class ParkingSession implements Serializable{
     public String toString()
     {
         String result = "";
-        result = "User:" + user + "Spot: " + spot + " the start time is: "+ starttime.toString()
-                + " the finish time: "+ finishtime.toString();
+        result = "User:" + user + "Spot: " + spot + " the start time is: "+ starttime.getTime().toString()
+                + " the finish time: "+ finishtime.getTime().toString();
         return result;
     }
 }
