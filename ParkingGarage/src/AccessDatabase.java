@@ -47,6 +47,7 @@ public class AccessDatabase {
 			try
 			{
 				ois.writeObject(new Garage());
+                                ois.close();
 			}
 			catch(Exception e)
 			{

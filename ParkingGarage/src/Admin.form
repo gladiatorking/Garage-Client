@@ -898,6 +898,7 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="UserDataBase udb = AccessDatabase.readUserDB();&#xa;&#xa;nameList.removeAllItems();&#xa;&#xa;for(RegisteredUser i : udb.users)&#xa;{&#xa;    nameList.addItem(i.username);&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Admin_nameList"/>
               </AuxValues>
             </Component>
           </SubComponents>

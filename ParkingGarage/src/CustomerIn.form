@@ -68,16 +68,19 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="329" max="32767" attributes="0"/>
                               <Component id="jTextField4" min="-2" pref="61" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="licencePlate" min="-2" pref="133" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="241" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="available" max="32767" attributes="0"/>
+                                  <Component id="licencePlate" pref="133" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -92,7 +95,9 @@
                           <Component id="jLabel6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="licencePlate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="264" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="available" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="241" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -125,6 +130,20 @@
             <Component class="javax.swing.JTextField" name="licencePlate">
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="available">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="availableActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;available.removeAllItems();&#xd;&#xa;int [] unAvailableSpots = gdb.getUnavailableSpots();&#xd;&#xa;for(int i = 0; i &lt; unAvailableSpots.length; i++)&#xd;&#xa;{&#xd;&#xa;if(i+1 != unAvailableSpots[i] )&#xd;&#xa;{&#xd;&#xa;available.addItem(i+1);&#xd;&#xa;}&#xd;&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CustomerIn_available"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
