@@ -66,6 +66,12 @@ public class CustomerIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
         jButton5.setText("Back");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +249,11 @@ public class CustomerIn extends javax.swing.JFrame {
         jLabel8.setText("Reservations");
 
         jButton2.setText("Go");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +330,31 @@ public class CustomerIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        UserDataBase udb = AccessDatabase.readUserDB();
+        Garage gdb = AccessDatabase.readGarageDB();
+        for(RegisteredUser a : udb.users)
+        {
+            if(a.username.equals(jTextField1.getText()))
+            {
+                if(a.getPassword().equals(jPasswordField1.getText()))
+                {
+                 ParkingSession newSpot= new ParkingSession(Integer.parseInt(available1.getSelectedItem().toString()),
+                jTextField1.getText());
+                 gdb.addCurrentSpot(newSpot); 
+                 AccessDatabase.writeGarageDB(gdb);  
+                }
+            }
+        }
+        licencePlate.setText(null);
+        Garage gdb2 = AccessDatabase.readGarageDB();
+
+        available1.removeAllItems();
+        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
+        for(int i = 0; i < availableSpots.length; i++)
+        {
+        available1.addItem(availableSpots[i]);
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
         private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -350,8 +385,63 @@ public class CustomerIn extends javax.swing.JFrame {
                 licencePlate.getText());
         gdb.addCurrentSpot(newSpot);
         AccessDatabase.writeGarageDB(gdb);
-        licencePlate.setText(null);
+       Garage gdb1 = AccessDatabase.readGarageDB();
+
+        available.removeAllItems();
+        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        for(int i = 0; i < availableSpots2.length; i++)
+        {
+        available.addItem(availableSpots2[i]);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      UserDataBase udb = AccessDatabase.readUserDB();
+        Garage gdb = AccessDatabase.readGarageDB();
+        for(RegisteredUser a : udb.users)
+        {
+            if(a.username.equals(jTextField1.getText()))
+            {
+                if(a.getPassword().equals(jPasswordField1.getText()))
+                {
+                 
+                 AccessDatabase.writeGarageDB(gdb);  
+                }
+            }
+        }
+        Garage gdb3 = AccessDatabase.readGarageDB();
+        reserved.removeAllItems();
+        for(ParkingSession a : gdb3.getReserved())
+        {
+        reserved.addItem(a.toString());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        Garage gdb1 = AccessDatabase.readGarageDB();
+
+        available.removeAllItems();
+        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        for(int i = 0; i < availableSpots2.length; i++)
+        {
+            available.addItem(availableSpots2[i]);
+        }
+        Garage gdb2 = AccessDatabase.readGarageDB();
+
+        available1.removeAllItems();
+        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
+        for(int i = 0; i < availableSpots.length; i++)
+        {
+        available1.addItem(availableSpots[i]);
+        }
+        
+        Garage gdb3 = AccessDatabase.readGarageDB();
+        reserved.removeAllItems();
+        for(ParkingSession a : gdb3.getReserved())
+        {
+            reserved.addItem(a.toString());
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
