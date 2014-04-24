@@ -72,6 +72,12 @@ public class Admin extends javax.swing.JFrame {
         plateNumber = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        addUserMessage = new javax.swing.JTextField();
+        removeUserPane = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        nameList = new javax.swing.JComboBox();
+        removeUserMessage = new javax.swing.JTextField();
         addReservationPanel = new javax.swing.JPanel();
         reservationUsername = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -79,20 +85,21 @@ public class Admin extends javax.swing.JFrame {
         month = new javax.swing.JComboBox();
         day = new javax.swing.JComboBox();
         year = new javax.swing.JComboBox();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        timeAMPM = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        Hour = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        addReservationUser = new javax.swing.JComboBox();
+        jTextField2 = new javax.swing.JTextField();
         removeReservationPane = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton5 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         billingPane = new javax.swing.JPanel();
-        jToggleButton3 = new javax.swing.JToggleButton();
         jLabel22 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
-        removeUserPane = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        nameList = new javax.swing.JComboBox();
 
         jInternalFrame1.setVisible(true);
 
@@ -345,20 +352,26 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        addUserMessage.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addContainerGap()
                 .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addUserMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(addUserMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -393,6 +406,61 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Add User", addUserPane);
 
+        jLabel21.setText("Username");
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        UserDataBase udb = AccessDatabase.readUserDB();
+
+        nameList.removeAllItems();
+
+        for(RegisteredUser i : udb.users)
+        {
+            nameList.addItem(i.username);
+        }
+
+        removeUserMessage.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout removeUserPaneLayout = new javax.swing.GroupLayout(removeUserPane);
+        removeUserPane.setLayout(removeUserPaneLayout);
+        removeUserPaneLayout.setHorizontalGroup(
+            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addGroup(removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(removeUserPaneLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(removeUserMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, removeUserPaneLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(497, Short.MAX_VALUE))
+        );
+        removeUserPaneLayout.setVerticalGroup(
+            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeUserMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jButton2)
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
+
+        exitTab.addTab("Remove User", removeUserPane);
+
         jLabel19.setText("Username:");
 
         jLabel20.setText("Start Date:");
@@ -403,16 +471,26 @@ public class Admin extends javax.swing.JFrame {
 
         year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Year", " " }));
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm"))));
-        jFormattedTextField1.setText("h:mm");
-        jFormattedTextField1.setToolTipText("");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Hour.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hour", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00" }));
+
+        jButton3.setText("Submit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        timeAMPM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "am", "pm", " " }));
+        UserDataBase udb = AccessDatabase.readUserDB();
+
+        addReservationUser.removeAllItems();
+
+        for(RegisteredUser i : udb.users)
+        {
+            addReservationUser.addItem(i.username);
+        }
+
+        jTextField2.setForeground(new java.awt.Color(204, 0, 0));
+        jTextField2.setText("jTextField2");
 
         javax.swing.GroupLayout reservationUsernameLayout = new javax.swing.GroupLayout(reservationUsername);
         reservationUsername.setLayout(reservationUsernameLayout);
@@ -423,23 +501,25 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(reservationUsernameLayout.createSequentialGroup()
-                        .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, reservationUsernameLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(reservationUsernameLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(reservationUsernameLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3))
+                            .addGroup(reservationUsernameLayout.createSequentialGroup()
                                 .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(timeAMPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(311, Short.MAX_VALUE))
+                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Hour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         reservationUsernameLayout.setVerticalGroup(
             reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,7 +527,7 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -455,9 +535,12 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeAMPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(252, Short.MAX_VALUE))
+                    .addComponent(Hour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addReservationPanelLayout = new javax.swing.GroupLayout(addReservationPanel);
@@ -479,49 +562,79 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Add Reservation", addReservationPanel);
 
+        jLabel23.setText("Reservations:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton5.setText("Remove");
+
+        jTextField1.setForeground(new java.awt.Color(204, 0, 0));
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout removeReservationPaneLayout = new javax.swing.GroupLayout(removeReservationPane);
         removeReservationPane.setLayout(removeReservationPaneLayout);
         removeReservationPaneLayout.setHorizontalGroup(
             removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGroup(removeReservationPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(removeReservationPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(removeReservationPaneLayout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
         removeReservationPaneLayout.setVerticalGroup(
             removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
+            .addGroup(removeReservationPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         exitTab.addTab("Remove Reservation", removeReservationPane);
 
-        jToggleButton3.setText("Generate Bills");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel22.setText("Generates and sends bills to registered users.");
+
+        jButton4.setText("Generate Bills");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-
-        jLabel22.setText("Generates and sends bills to registered users.");
 
         javax.swing.GroupLayout billingPaneLayout = new javax.swing.GroupLayout(billingPane);
         billingPane.setLayout(billingPaneLayout);
         billingPaneLayout.setHorizontalGroup(
             billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(billingPaneLayout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(jLabel22)
+                .addGroup(billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(billingPaneLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel22))
+                    .addGroup(billingPaneLayout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(jButton4)))
                 .addContainerGap(189, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billingPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton3)
-                .addGap(273, 273, 273))
         );
         billingPaneLayout.setVerticalGroup(
             billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(billingPaneLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabel22)
-                .addGap(33, 33, 33)
-                .addComponent(jToggleButton3)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton4)
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         exitTab.addTab("Billing", billingPane);
@@ -552,49 +665,6 @@ public class Admin extends javax.swing.JFrame {
         );
 
         exitTab.addTab("Exit", jPanel1);
-
-        jLabel21.setText("Username");
-
-        jButton2.setText("Delete");
-
-        UserDataBase udb = AccessDatabase.readUserDB();
-
-        nameList.removeAllItems();
-
-        for(RegisteredUser i : udb.users)
-        {
-            nameList.addItem(i.username);
-        }
-
-        javax.swing.GroupLayout removeUserPaneLayout = new javax.swing.GroupLayout(removeUserPane);
-        removeUserPane.setLayout(removeUserPaneLayout);
-        removeUserPaneLayout.setHorizontalGroup(
-            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(23, 23, 23))
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(497, Short.MAX_VALUE))
-        );
-        removeUserPaneLayout.setVerticalGroup(
-            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
-
-        exitTab.addTab("Remove User", removeUserPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -636,12 +706,8 @@ public class Admin extends javax.swing.JFrame {
 		);
 		
 		AccessDatabase.writeUserDB(udb);
-		
+		addUserMessage.setText("User Added: " + username.getText());
         }//GEN-LAST:event_jButton1ActionPerformed
-
-        private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
         private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
                 // TODO add your handling code here:
@@ -650,10 +716,6 @@ public class Admin extends javax.swing.JFrame {
         private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
                 // TODO add your handling code here:
         }//GEN-LAST:event_makeActionPerformed
-
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void exitTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTabMouseClicked
         // TODO add your handling code here:
@@ -666,7 +728,46 @@ public class Admin extends javax.swing.JFrame {
         {
             nameList.addItem(i.username);
         }
+
+        addReservationUser.removeAllItems();
+
+        for(RegisteredUser i : udb.users)
+        {
+            addReservationUser.addItem(i.username);
+        }
     }//GEN-LAST:event_exitTabMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        UserDataBase udb = AccessDatabase.readUserDB();
+        
+        for(RegisteredUser i : udb.users)
+        {
+            i.generateBill(1050);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        UserDataBase udb = AccessDatabase.readUserDB();
+        
+        udb.users.remove(nameList.getSelectedIndex());
+        removeUserMessage.setText("User Deleted: " + nameList.getSelectedItem());
+        
+        AccessDatabase.writeUserDB(udb);
+
+        nameList.removeAllItems();
+        
+        for(RegisteredUser i : udb.users)
+        {
+            nameList.addItem(i.username);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -709,7 +810,10 @@ public class Admin extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox Hour;
     private javax.swing.JPanel addReservationPanel;
+    private javax.swing.JComboBox addReservationUser;
+    private javax.swing.JTextField addUserMessage;
     private javax.swing.JPanel addUserPane;
     private javax.swing.JTextField address;
     private javax.swing.JPanel billingPane;
@@ -722,7 +826,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField fName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -739,6 +846,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -752,9 +860,9 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField make;
     private javax.swing.JTextField model;
@@ -763,11 +871,11 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField password;
     private javax.swing.JTextField plateNumber;
     private javax.swing.JPanel removeReservationPane;
+    private javax.swing.JTextField removeUserMessage;
     private javax.swing.JPanel removeUserPane;
     private javax.swing.JPanel reservationUsername;
     private javax.swing.JTextField securityCode;
     private javax.swing.JTextField state;
-    private javax.swing.JComboBox timeAMPM;
     private javax.swing.JTextField username;
     private javax.swing.JComboBox year;
     private javax.swing.JTextField zipCode;
