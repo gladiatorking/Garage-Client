@@ -838,7 +838,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="UserDataBase udb = AccessDatabase.readUserDB();&#xa;&#xa;addReservationUser.removeAllItems();&#xa;&#xa;for(RegisteredUser i : udb.users)&#xa;{&#xa;    addReservationUser.addItem(i.username);&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="UserDataBase udb1 = AccessDatabase.readUserDB();&#xa;&#xa;addReservationUser.removeAllItems();&#xa;&#xa;for(RegisteredUser i : udb1.users)&#xa;{&#xa;    addReservationUser.addItem(i.username);&#xa;}"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField2">

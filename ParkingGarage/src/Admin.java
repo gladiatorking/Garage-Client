@@ -480,11 +480,11 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        UserDataBase udb = AccessDatabase.readUserDB();
+        UserDataBase udb1 = AccessDatabase.readUserDB();
 
         addReservationUser.removeAllItems();
 
-        for(RegisteredUser i : udb.users)
+        for(RegisteredUser i : udb1.users)
         {
             addReservationUser.addItem(i.username);
         }
