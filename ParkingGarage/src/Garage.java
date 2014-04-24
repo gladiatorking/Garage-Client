@@ -17,6 +17,8 @@ public class Garage implements Serializable {
     private int maxSpots = 50;
     private ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
     private ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
+    private String user;
+    
     
     public boolean spotCheck(ParkingSession newspot)
     {
@@ -184,11 +186,11 @@ public class Garage implements Serializable {
         
         int[] tempAvail = new int[counter];
         int tempCounter =0;
-        for(int i=0; i <maxSpots; i++)
+        for(int i=0; i <counter; i++)
         {
             if(available[i] != 0)
             {
-                tempAvail[counter++] = available[i];
+                tempAvail[tempCounter++] = available[i];
             }
         }
         return tempAvail;

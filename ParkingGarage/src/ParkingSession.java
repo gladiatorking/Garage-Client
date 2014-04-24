@@ -12,17 +12,16 @@ import java.util.Calendar;
  * @author fokken
  */
 public class ParkingSession {
-    private Calendar currenttime;
     private int spot;
-    private long starttime;
-    private long finishtime;
+    private Calendar starttime;
+    private Calendar finishtime;
     private String user;
     
     public ParkingSession(int newSpot, String newusername)
     {
         spot = newSpot;
-        currenttime = Calendar.getInstance();
-        starttime =  currenttime.getTimeInMillis();
+        starttime = Calendar.getInstance();
+        
         user = newusername;
     }
     /**
@@ -31,15 +30,14 @@ public class ParkingSession {
      * @param newstarttime
      * @param newfinishtime 
      */
+    
     public ParkingSession(int newSpot,int newstarttime, int newfinishtime, int month, int day, int year, String username)
     {
         spot = newSpot;
-        Calendar temp = Calendar.getInstance();
-        Calendar temp1 = Calendar.getInstance();
-        temp.set(year, month, day, newstarttime, 0);
-        temp1.set(year , month, day, newfinishtime , 0);
-        starttime = temp.getTimeInMillis();
-        finishtime = temp1.getTimeInMillis();
+        starttime = Calendar.getInstance();
+        finishtime = Calendar.getInstance();
+        starttime.set(year, month, day, newstarttime, 0);
+        finishtime.set(year , month, day, newfinishtime , 0);
         user = username;
     }
     public void setUser(String name)
@@ -58,26 +56,25 @@ public class ParkingSession {
     {
         return spot;
     }
-    public void setStartingtime(int newStarttime)
+    public void setStartingtime(Calendar newStarttime)
     {
         starttime= newStarttime;
     }
-    public void setFinishtime(int newfinishtime)
+    public void setFinishtime(Calendar newfinishtime)
     {
         finishtime= newfinishtime;
     }
-    public long getStartingtime()
+    public Calendar getStartingtime()
     {
         return starttime;
     }
-    public long getFinishtime()
+    public Calendar getFinishtime()
     {
         return finishtime;
     }
     public int checkout()
     {
-        currenttime = Calendar.getInstance();
-        finishtime = currenttime.getTimeInMillis();
+        finishtime = Calendar.getInstance();
         return getHours();
     }
     /**
@@ -88,7 +85,7 @@ public class ParkingSession {
      */
     public int getHours()
     {
-        long total = (finishtime - starttime) * (1/3600000);
+        long total = (finishtime.getTimeInMillis() - starttime.getTimeInMillis()) * (1/3600000);
         if(total == 0)
         {
             return 1;
@@ -101,7 +98,8 @@ public class ParkingSession {
     public String toString()
     {
         String result = "";
-        result = "Spot: " + spot + " the start time is: "+ starttime + " the finish time: "+ finishtime;
+        result = "User:" + user + "Spot: " + spot + " the start time is: "+ starttime.toString()
+                + " the finish time: "+ finishtime.toString();
         return result;
     }
 }
