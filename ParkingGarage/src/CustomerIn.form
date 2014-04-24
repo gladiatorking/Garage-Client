@@ -149,7 +149,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="availableActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;available.removeAllItems();&#xd;&#xa;int [] availableSpots = gdb.getAvailable(gdb.getUnavailableSpots());&#xd;&#xa;for(int i = 0; i &lt; availableSpots.length; i++)&#xd;&#xa;{&#xd;&#xa;available.addItem(availableSpots[i]);&#xd;&#xa;}&#xd;&#xa;"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb1 = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;available.removeAllItems();&#xd;&#xa;int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());&#xd;&#xa;for(int i = 0; i &lt; availableSpots2.length; i++)&#xd;&#xa;{&#xd;&#xa;available.addItem(availableSpots2[i]);&#xd;&#xa;}&#xd;&#xa;"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CustomerIn_available"/>
               </AuxValues>
             </Component>
@@ -275,7 +275,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="available1ActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;available.removeAllItems();&#xd;&#xa;int [] availableSpots = gdb.getAvailable(gdb.getUnavailableSpots());&#xd;&#xa;for(int i = 0; i &lt; availableSpots.length; i++)&#xd;&#xa;{&#xd;&#xa;available.addItem(availableSpots[i]);&#xd;&#xa;}&#xd;&#xa;"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb2 = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;available.removeAllItems();&#xd;&#xa;int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());&#xd;&#xa;for(int i = 0; i &lt; availableSpots.length; i++)&#xd;&#xa;{&#xd;&#xa;available.addItem(availableSpots[i]);&#xd;&#xa;}&#xd;&#xa;"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CustomerIn_available"/>
               </AuxValues>
             </Component>

@@ -31,8 +31,9 @@ public class Garage implements Serializable {
         }
         for(ParkingSession b : Reserved)
         {
-            if(b.getSpot() == newspot.getSpot()&& b.getFinishtime()> newspot.getStartingtime()
-                    && b.getStartingtime()< newspot.getStartingtime())
+            if(b.getSpot() == newspot.getSpot()&& b.getFinishtime().getTimeInMillis()> 
+                    newspot.getStartingtime().getTimeInMillis()
+                    && b.getStartingtime().getTimeInMillis()< newspot.getStartingtime().getTimeInMillis())
             {
                 return false;
             }
@@ -56,8 +57,11 @@ public class Garage implements Serializable {
     {
         for(int a = 0; a<Reserved.size(); a++)
         {
-        if(Reserved.get(a).getSpot()== newReservation.getSpot() && (Reserved.get(a).getStartingtime() < 
-  newReservation.getStartingtime())  && (Reserved.get(a).getFinishtime()> newReservation.getFinishtime() ))
+        if(Reserved.get(a).getSpot()== newReservation.getSpot() && 
+                (Reserved.get(a).getStartingtime().getTimeInMillis() <  
+                newReservation.getStartingtime().getTimeInMillis()) 
+                && (Reserved.get(a).getFinishtime().getTimeInMillis()
+                > newReservation.getFinishtime().getTimeInMillis() ))
         {
             return false;
         }  
@@ -68,7 +72,8 @@ public class Garage implements Serializable {
     public boolean removeReservation(ParkingSession res,boolean before)
     {
         Calendar current = Calendar.getInstance();
-        if(res.getStartingtime()< ((current.getTimeInMillis() *(1/3600000))+24)&& before)
+        if(res.getStartingtime().getTimeInMillis()
+                < ((current.getTimeInMillis() *(1/3600000))+24)&& before)
                 {
                    return false;
                 }
@@ -111,9 +116,9 @@ public class Garage implements Serializable {
             Calendar now = Calendar.getInstance();
 	    for(int i=0; i<Reserved.size(); i++)
 	    {
-		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime()*(1/60000))-15 < 
-                         now.getTimeInMillis()*(1/60000))
-                         && (Reserved.get(i).getFinishtime()> now.getTimeInMillis() ))
+		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime().getTimeInMillis()*(1/60000))-15
+                         < now.getTimeInMillis()*(1/60000))
+                         && (Reserved.get(i).getFinishtime().getTimeInMillis()> now.getTimeInMillis() ))
 		 {
 			 counter1++;
 		 }
@@ -135,9 +140,9 @@ public class Garage implements Serializable {
 	    
 	    for(int i=0; i<Reserved.size(); i++)
 	    {
-		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime()*(1/60000))-15 < 
+		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime().getTimeInMillis()*(1/60000))-15 < 
                          now.getTimeInMillis()*(1/60000))
-                         && (Reserved.get(i).getFinishtime()> now.getTimeInMillis() ))
+                         && (Reserved.get(i).getFinishtime().getTimeInMillis()> now.getTimeInMillis() ))
 		 {
 			 counter1++;
 		 }

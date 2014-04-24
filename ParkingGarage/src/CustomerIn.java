@@ -70,13 +70,13 @@ public class CustomerIn extends javax.swing.JFrame {
 
         jLabel6.setText("Licence Plate:");
 
-        Garage gdb = AccessDatabase.readGarageDB();
+        Garage gdb1 = AccessDatabase.readGarageDB();
 
         available.removeAllItems();
-        int [] availableSpots = gdb.getAvailable(gdb.getUnavailableSpots());
-        for(int i = 0; i < availableSpots.length; i++)
+        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        for(int i = 0; i < availableSpots2.length; i++)
         {
-            available.addItem(availableSpots[i]);
+            available.addItem(availableSpots2[i]);
         }
         available.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,10 +146,10 @@ public class CustomerIn extends javax.swing.JFrame {
 
         jLabel5.setText("Password:");
 
-        Garage gdb = AccessDatabase.readGarageDB();
+        Garage gdb2 = AccessDatabase.readGarageDB();
 
         available.removeAllItems();
-        int [] availableSpots = gdb.getAvailable(gdb.getUnavailableSpots());
+        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
         for(int i = 0; i < availableSpots.length; i++)
         {
             available.addItem(availableSpots[i]);
