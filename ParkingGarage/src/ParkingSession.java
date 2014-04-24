@@ -100,8 +100,8 @@ public class ParkingSession implements Serializable{
     public String toString()
     {
         String result = "";
-        result = "User:" + user + "Spot: " + spot + " the start time is: "+ starttime.getTime().toString()
-                + " the finish time: "+ finishtime.getTime().toString();
+        result = "User: " + user + " Spot: " + spot + " Start time: "+ starttime.getTime().toString()
+                + " End Time: "+ finishtime.getTime().toString();
         return result;
     }
 }

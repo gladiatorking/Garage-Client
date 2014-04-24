@@ -96,9 +96,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         removeReservationPane = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        removeReservationList = new javax.swing.JComboBox();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        removeReservationMessage = new javax.swing.JTextField();
         billingPane = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -604,12 +604,26 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel23.setText("Reservations:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Garage gdb3 = AccessDatabase.readGarageDB();
+        removeReservationList.removeAllItems();
+        for(ParkingSession i : gdb3.getReserved())
+        {
+            removeReservationList.addItem(i.toString());
+        }
+        removeReservationList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeReservationListActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Remove");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setForeground(new java.awt.Color(204, 0, 0));
-        jTextField1.setText("jTextField1");
+        removeReservationMessage.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout removeReservationPaneLayout = new javax.swing.GroupLayout(removeReservationPane);
         removeReservationPane.setLayout(removeReservationPaneLayout);
@@ -617,16 +631,16 @@ public class Admin extends javax.swing.JFrame {
             removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(removeReservationPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(removeReservationPaneLayout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(removeReservationList, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(removeReservationPaneLayout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(436, Short.MAX_VALUE))
+                        .addComponent(removeReservationMessage)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         removeReservationPaneLayout.setVerticalGroup(
             removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -634,11 +648,11 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(removeReservationList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(removeReservationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(removeReservationMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(285, Short.MAX_VALUE))
         );
 
@@ -786,14 +800,20 @@ public class Admin extends javax.swing.JFrame {
             addReservationUser.addItem(i.username);
         }
         
-        Garage gdb1 = AccessDatabase.readGarageDB();
+        Garage gdb = AccessDatabase.readGarageDB();
 
         addReservationParkingSpot.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable();
+        int [] availableSpots2 = gdb.getAvailable();
         
         for(int i = 0; i < availableSpots2.length; i++)
         {
             addReservationParkingSpot.addItem(availableSpots2[i]);
+        }
+        
+        removeReservationList.removeAllItems();
+        for(ParkingSession i : gdb.getReserved())
+        {
+            removeReservationList.addItem(i.toString());
         }
 
     }//GEN-LAST:event_exitTabMouseClicked
@@ -817,6 +837,16 @@ public class Admin extends javax.swing.JFrame {
             AccessDatabase.writeGarageDB(gdb);
 
             addReservationMessage.setText("Added Reservation for: " + (String) addReservationUser.getSelectedItem());
+            
+            Garage gdb1 = AccessDatabase.readGarageDB();
+
+            addReservationParkingSpot.removeAllItems();
+            int [] availableSpots2 = gdb1.getAvailable();
+            for(int i = 0; i < availableSpots2.length; i++)
+            {
+            addReservationParkingSpot.addItem(availableSpots2[i]);
+            }
+
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -857,6 +887,29 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void removeReservationListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeReservationListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeReservationListActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Garage gdb = AccessDatabase.readGarageDB();
+        
+        gdb.Reserved.remove(removeReservationList.getSelectedIndex());
+        removeReservationMessage.setText((String) removeReservationList.getSelectedItem());
+        
+        
+        //update list 
+        removeReservationList.removeAllItems();
+        for(ParkingSession a : gdb.getReserved())
+        {
+            removeReservationList.addItem(a.toString());
+        }
+        
+        AccessDatabase.writeGarageDB(gdb);
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -923,7 +976,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -956,7 +1008,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField make;
     private javax.swing.JTextField model;
@@ -964,6 +1015,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox nameList;
     private javax.swing.JTextField password;
     private javax.swing.JTextField plateNumber;
+    private javax.swing.JComboBox removeReservationList;
+    private javax.swing.JTextField removeReservationMessage;
     private javax.swing.JPanel removeReservationPane;
     private javax.swing.JTextField removeUserMessage;
     private javax.swing.JPanel removeUserPane;
