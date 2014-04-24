@@ -46,7 +46,7 @@ public class AccessDatabase {
 			
 			try
 			{
-				//ois.writeObject(new GarageDB());
+				ois.writeObject(new Garage());
 			}
 			catch(Exception e)
 			{
@@ -98,6 +98,58 @@ public class AccessDatabase {
 			try
 			{
 				ois.writeObject(udb);
+				ois.close();
+			}
+			catch(Exception e)
+			{
+				System.err.println("Writing object failed.\n" + e);
+			}
+		}
+		catch(Exception e)
+		{
+			System.err.println("Error prepping the file output stream.\n" + e);
+		}
+	}
+        
+        public static Garage readGarageDB()
+	{
+		try
+		{
+			InputStream fis = new FileInputStream(garagedbLc);
+			InputStream bis = new BufferedInputStream(fis);
+			ObjectInput ois = new ObjectInputStream(bis);
+			
+			try
+			{
+				Garage gdb = (Garage) ois.readObject();
+				ois.close();
+				return gdb;
+			}
+			catch(Exception e)
+			{
+				System.err.println("User database loaded sucessfully, but casting process failed.\n" + e);
+				return null;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			System.err.println("Problem reading from user database.\n" + e);
+			return null;
+		}
+	}
+        
+        public static void writeGarageDB(Garage gdb)
+	{
+		try
+		{
+			OutputStream fis = new FileOutputStream(garagedbLc);
+			OutputStream bis = new BufferedOutputStream(fis);
+			ObjectOutput ois = new ObjectOutputStream(bis);
+			
+			try
+			{
+				ois.writeObject(gdb);
 				ois.close();
 			}
 			catch(Exception e)

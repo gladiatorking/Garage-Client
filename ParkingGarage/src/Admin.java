@@ -72,13 +72,6 @@ public class Admin extends javax.swing.JFrame {
         plateNumber = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        removeUserPane = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField13 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        usernameList = new javax.swing.JTextArea();
-        jToggleButton4 = new javax.swing.JToggleButton();
         addReservationPanel = new javax.swing.JPanel();
         reservationUsername = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -96,6 +89,10 @@ public class Admin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
+        removeUserPane = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        nameList = new javax.swing.JComboBox();
 
         jInternalFrame1.setVisible(true);
 
@@ -114,6 +111,11 @@ public class Admin extends javax.swing.JFrame {
         setTitle("Sign Up");
 
         exitTab.setName(""); // NOI18N
+        exitTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitTabMouseClicked(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -391,59 +393,6 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Add User", addUserPane);
 
-        jLabel21.setText("Username");
-
-        jButton2.setText("Delete");
-
-        usernameList.setColumns(20);
-        usernameList.setRows(5);
-        jScrollPane1.setViewportView(usernameList);
-
-        jToggleButton4.setText("Refresh");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout removeUserPaneLayout = new javax.swing.GroupLayout(removeUserPane);
-        removeUserPane.setLayout(removeUserPaneLayout);
-        removeUserPaneLayout.setHorizontalGroup(
-            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeUserPaneLayout.createSequentialGroup()
-                        .addComponent(jToggleButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 442, Short.MAX_VALUE)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(23, 23, 23))
-                    .addGroup(removeUserPaneLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
-        );
-        removeUserPaneLayout.setVerticalGroup(
-            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeUserPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton4))
-                .addContainerGap())
-        );
-
-        exitTab.addTab("Remove User", removeUserPane);
-
         jLabel19.setText("Username:");
 
         jLabel20.setText("Start Date:");
@@ -604,6 +553,49 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Exit", jPanel1);
 
+        jLabel21.setText("Username");
+
+        jButton2.setText("Delete");
+
+        UserDataBase udb = AccessDatabase.readUserDB();
+
+        nameList.removeAllItems();
+
+        for(RegisteredUser i : udb.users)
+        {
+            nameList.addItem(i.username);
+        }
+
+        javax.swing.GroupLayout removeUserPaneLayout = new javax.swing.GroupLayout(removeUserPane);
+        removeUserPane.setLayout(removeUserPaneLayout);
+        removeUserPaneLayout.setHorizontalGroup(
+            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(23, 23, 23))
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(497, Short.MAX_VALUE))
+        );
+        removeUserPaneLayout.setVerticalGroup(
+            removeUserPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeUserPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        exitTab.addTab("Remove User", removeUserPane);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -651,34 +643,6 @@ public class Admin extends javax.swing.JFrame {
                 // TODO add your handling code here:
         }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
-        private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-                // TODO add your handling code here:
-		UserDataBase udb = AccessDatabase.readUserDB();
-		
-		String output = "";
-		int width = 3;
-		int currentWidth = 1;
-		int counter = 0;
-		
-		for(RegisteredUser i : udb.users)
-		{
-			if (currentWidth > 0 && currentWidth < 3)
-			{
-				output += counter + " " + i.username + "\t"; 
-				
-				currentWidth++;
-			}
-			else if(currentWidth == 3)
-			{
-				output += "\n";
-				currentWidth = 1;
-			}
-			counter++;
-		}
-		
-		usernameList.setText(output);
-        }//GEN-LAST:event_jToggleButton4ActionPerformed
-
         private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
                 // TODO add your handling code here:
         }//GEN-LAST:event_usernameActionPerformed
@@ -690,6 +654,19 @@ public class Admin extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         
     }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void exitTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTabMouseClicked
+        // TODO add your handling code here:
+        
+        UserDataBase udb = AccessDatabase.readUserDB();
+
+        nameList.removeAllItems();
+        
+        for(RegisteredUser i : udb.users)
+        {
+            nameList.addItem(i.username);
+        }
+    }//GEN-LAST:event_exitTabMouseClicked
 
 	/**
 	 * @param args the command line arguments
@@ -774,17 +751,15 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField make;
     private javax.swing.JTextField model;
     private javax.swing.JComboBox month;
+    private javax.swing.JComboBox nameList;
     private javax.swing.JTextField password;
     private javax.swing.JTextField plateNumber;
     private javax.swing.JPanel removeReservationPane;
@@ -794,7 +769,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField state;
     private javax.swing.JComboBox timeAMPM;
     private javax.swing.JTextField username;
-    private javax.swing.JTextArea usernameList;
     private javax.swing.JComboBox year;
     private javax.swing.JTextField zipCode;
     // End of variables declaration//GEN-END:variables

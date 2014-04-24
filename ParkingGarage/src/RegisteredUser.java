@@ -21,6 +21,7 @@ public class RegisteredUser extends Users{
 	private String zipCode;
 	private String make;
 	private String model;
+        private int bill;
 	
 	public RegisteredUser(
 		String fname, 
@@ -58,6 +59,7 @@ public class RegisteredUser extends Users{
 		
 		this.make = make;
 		this.model = model;
+                this.bill = 0;
 	}
 	
 	public String getEmail()
