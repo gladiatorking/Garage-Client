@@ -15,8 +15,8 @@ import java.util.Calendar;
  */
 public class Garage implements Serializable {
     private int maxSpots = 50;
-    private ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
-    private ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
+    public ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
+    public ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
     private String user;
     
     public ArrayList<ParkingSession> getReserved()

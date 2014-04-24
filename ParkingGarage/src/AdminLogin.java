@@ -138,7 +138,9 @@ public class AdminLogin extends javax.swing.JFrame {
 		{
 			if(pass.getText().equals("4321"))
 			{
-				(new Admin()).setVisible(true);
+				pass.setText("");
+                                empID.setText("");
+                                (new Admin()).setVisible(true);
 				return;
 			}
 		}

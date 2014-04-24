@@ -85,10 +85,15 @@ public class Admin extends javax.swing.JFrame {
         month = new javax.swing.JComboBox();
         day = new javax.swing.JComboBox();
         year = new javax.swing.JComboBox();
-        Hour = new javax.swing.JComboBox();
+        Hours = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
         addReservationUser = new javax.swing.JComboBox();
-        jTextField2 = new javax.swing.JTextField();
+        addReservationMessage = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        addReservationParkingSpot = new javax.swing.JComboBox();
+        Houre = new javax.swing.JComboBox();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         removeReservationPane = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -98,8 +103,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -463,15 +468,15 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel19.setText("Username:");
 
-        jLabel20.setText("Start Date:");
+        jLabel20.setText("Date:");
 
-        month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month", "January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", " " }));
 
-        year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Year", " " }));
+        year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Year", "2014", "2015", "2016", "2017" }));
 
-        Hour.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hour", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00" }));
+        Hours.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hour", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "00" }));
 
         jButton3.setText("Submit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -489,8 +494,24 @@ public class Admin extends javax.swing.JFrame {
             addReservationUser.addItem(i.username);
         }
 
-        jTextField2.setForeground(new java.awt.Color(204, 0, 0));
-        jTextField2.setText("jTextField2");
+        addReservationMessage.setForeground(new java.awt.Color(204, 0, 0));
+
+        jLabel24.setText("Parking Spot:");
+
+        Garage gdb1 = AccessDatabase.readGarageDB();
+
+        addReservationParkingSpot.removeAllItems();
+        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        for(int i = 0; i < availableSpots2.length; i++)
+        {
+            addReservationParkingSpot.addItem(availableSpots2[i]);
+        }
+
+        Houre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hour", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "00" }));
+
+        jLabel25.setText("Start Time:");
+
+        jLabel26.setText("End Time:");
 
         javax.swing.GroupLayout reservationUsernameLayout = new javax.swing.GroupLayout(reservationUsername);
         reservationUsername.setLayout(reservationUsernameLayout);
@@ -503,23 +524,33 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(reservationUsernameLayout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addReservationParkingSpot, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(reservationUsernameLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(reservationUsernameLayout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3))
-                            .addGroup(reservationUsernameLayout.createSequentialGroup()
-                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Hour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(345, Short.MAX_VALUE))
+                            .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservationUsernameLayout.createSequentialGroup()
+                                    .addComponent(addReservationMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton3))
+                                .addGroup(reservationUsernameLayout.createSequentialGroup()
+                                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(reservationUsernameLayout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Houre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26))))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         reservationUsernameLayout.setVerticalGroup(
             reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,20 +558,29 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addReservationUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24)
+                    .addComponent(addReservationParkingSpot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Hour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Houre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(reservationUsernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
+                    .addComponent(addReservationMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addReservationPanelLayout = new javax.swing.GroupLayout(addReservationPanel);
@@ -639,29 +679,39 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Billing", billingPane);
 
-        jToggleButton1.setText("Log out of Admin Pannel");
+        jButton6.setText("Log Out of Administration Panel");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        jToggleButton2.setText("Exit Program");
+        jButton7.setText("Exit Program");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(jToggleButton2)
-                .addGap(122, 122, 122))
+                .addGap(94, 94, 94)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addGap(150, 150, 150))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGap(130, 130, 130)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2))
-                .addContainerGap(199, Short.MAX_VALUE))
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         exitTab.addTab("Exit", jPanel1);
@@ -735,10 +785,39 @@ public class Admin extends javax.swing.JFrame {
         {
             addReservationUser.addItem(i.username);
         }
+        
+        Garage gdb1 = AccessDatabase.readGarageDB();
+
+        addReservationParkingSpot.removeAllItems();
+        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        
+        for(int i = 0; i < availableSpots2.length; i++)
+        {
+            addReservationParkingSpot.addItem(availableSpots2[i]);
+        }
+
     }//GEN-LAST:event_exitTabMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if((int)addReservationParkingSpot.getSelectedItem() == 0){addReservationMessage.setText("Check Parking Spot");}
+        else if((String) Hours.getSelectedItem() == "Hour"){addReservationMessage.setText("Check Start Time");}
+        else if((String) Houre.getSelectedItem() == "Hour"){addReservationMessage.setText("Check End Time");}
+        else if((String) month.getSelectedItem() == "Month"){addReservationMessage.setText("Check Month");}
+        else if((String) year.getSelectedItem() == "Year"){addReservationMessage.setText("Check Year");}
+        else if((String) day.getSelectedItem() == "Day"){addReservationMessage.setText("Check Day");}
+        else if((String) addReservationUser.getSelectedItem() == null){addReservationMessage.setText("Check Username");}
+        else
+        {
+        
+            Garage gdb = AccessDatabase.readGarageDB();
+
+            gdb.addReserved(new ParkingSession((int)addReservationParkingSpot.getSelectedItem(), Integer.valueOf((String)Hours.getSelectedItem()), Integer.valueOf((String)Houre.getSelectedItem()), Integer.valueOf((String)month.getSelectedItem()), Integer.valueOf((String)day.getSelectedItem()), (int)year.getSelectedIndex()-1, (String) addReservationUser.getSelectedItem()));
+
+            AccessDatabase.writeGarageDB(gdb);
+
+            addReservationMessage.setText("Added Reservation for: " + (String) addReservationUser.getSelectedItem());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -768,6 +847,16 @@ public class Admin extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -810,8 +899,11 @@ public class Admin extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox Hour;
+    private javax.swing.JComboBox Houre;
+    private javax.swing.JComboBox Hours;
+    private javax.swing.JTextField addReservationMessage;
     private javax.swing.JPanel addReservationPanel;
+    private javax.swing.JComboBox addReservationParkingSpot;
     private javax.swing.JComboBox addReservationUser;
     private javax.swing.JTextField addUserMessage;
     private javax.swing.JPanel addUserPane;
@@ -829,6 +921,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -847,6 +941,9 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -860,9 +957,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField make;
     private javax.swing.JTextField model;
