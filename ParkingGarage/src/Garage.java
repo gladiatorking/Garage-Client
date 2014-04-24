@@ -19,7 +19,14 @@ public class Garage implements Serializable {
     private ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
     private String user;
     
-    
+    public ArrayList<ParkingSession> getReserved()
+    {
+        return Reserved;
+    }
+    public int getMaxSpots()
+    {
+        return maxSpots;
+    }
     public boolean spotCheck(ParkingSession newspot)
     {
         for(ParkingSession a : NotAvailable)

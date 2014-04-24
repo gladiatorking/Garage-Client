@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /*
@@ -11,7 +12,7 @@ import java.util.Calendar;
  *
  * @author fokken
  */
-public class ParkingSession {
+public class ParkingSession implements Serializable{
     private int spot;
     private Calendar starttime;
     private Calendar finishtime;
