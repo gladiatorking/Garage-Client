@@ -14,7 +14,7 @@ import java.util.Calendar;
  * @author fokken
  */
 public class Garage implements Serializable {
-    private int maxSpots;
+    private int maxSpots = 50;
     private ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
     private ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
     
@@ -133,9 +133,11 @@ public class Garage implements Serializable {
 	    
 	    for(int i=0; i<Reserved.size(); i++)
 	    {
-		 if(Reserved.get(i) != null)
+		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime()*(1/60000))-15 < 
+                         now.getTimeInMillis()*(1/60000))
+                         && (Reserved.get(i).getFinishtime()> now.getTimeInMillis() ))
 		 {
-			 temp[pointer++] = Reserved.get(i).getSpot();
+			 counter1++;
 		 }
 	    }
 	    
@@ -148,5 +150,47 @@ public class Garage implements Serializable {
 	    }
 	    
 	return temp; 
+    }
+    
+    public int[] getAvailable(int[] unavailable)
+    {
+        int[] available = new int[maxSpots];
+        
+        for(int i = 0; i < maxSpots; i++)
+        {
+            available[i] = i+1;
+        }
+        
+        for(int i = 0; i < unavailable.length; i++)
+        {
+            for(int j = 0; j < maxSpots; j++)
+            {
+                if(available[j] == unavailable[i])
+                {
+                    available[j] = 0;
+                }
+            }
+        }
+        
+        int counter =0;
+        
+        for(int i=0; i<maxSpots; i++)
+        {
+            if(available[i] != 0)
+            {
+                counter++;
+            }    
+        }
+        
+        int[] tempAvail = new int[counter];
+        int tempCounter =0;
+        for(int i=0; i <maxSpots; i++)
+        {
+            if(available[i] != 0)
+            {
+                tempAvail[counter++] = available[i];
+            }
+        }
+        return tempAvail;
     }
 }
