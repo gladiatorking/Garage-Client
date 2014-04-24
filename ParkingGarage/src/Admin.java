@@ -501,7 +501,7 @@ public class Admin extends javax.swing.JFrame {
         Garage gdb1 = AccessDatabase.readGarageDB();
 
         addReservationParkingSpot.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        int [] availableSpots2 = gdb1.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
             addReservationParkingSpot.addItem(availableSpots2[i]);
@@ -789,7 +789,7 @@ public class Admin extends javax.swing.JFrame {
         Garage gdb1 = AccessDatabase.readGarageDB();
 
         addReservationParkingSpot.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        int [] availableSpots2 = gdb1.getAvailable();
         
         for(int i = 0; i < availableSpots2.length; i++)
         {

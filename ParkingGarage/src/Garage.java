@@ -119,26 +119,37 @@ public class Garage implements Serializable {
 	    //{
 		//    temp[i] = i;
 	    //}
-	    int counter1 = 0;
+	    int counter1;
+            int counter2;
             Calendar now = Calendar.getInstance();
-	    for(int i=0; i<Reserved.size(); i++)
-	    {
-		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime().getTimeInMillis()*(1/60000))-15
-                         < now.getTimeInMillis()*(1/60000))
-                         && (Reserved.get(i).getFinishtime().getTimeInMillis()> now.getTimeInMillis() ))
-		 {
-			 counter1++;
-		 }
-	    }
-	    
-	    int counter2 = 0;
-	    for(int i=0; i<NotAvailable.size(); i++)
-	    {
-		 if(NotAvailable.get(i) != null)
-		 {
-			 counter2++;
-		 }
-	    }
+            
+            if(Reserved.size() != 0)
+            {
+                counter1 = 0;
+                counter2 = 0;
+                
+                for(int i=0; i<Reserved.size(); i++)
+                {
+                     if(Reserved.get(i) != null)
+                     {
+                             counter1++;
+                     }
+                }
+
+                
+                for(int i=0; i<NotAvailable.size(); i++)
+                {
+                     if(NotAvailable.get(i) != null)
+                     {
+                             counter2++;
+                     }
+                }
+            }
+            else
+            {
+                counter1 = 0;
+                counter2 = 0;
+            }
 	    
 	    int counter3 = counter1 + counter2;
 	    int pointer = 0;
@@ -147,11 +158,9 @@ public class Garage implements Serializable {
 	    
 	    for(int i=0; i<Reserved.size(); i++)
 	    {
-		 if(Reserved.get(i) != null && ((Reserved.get(i).getStartingtime().getTimeInMillis()*(1/60000))-15 < 
-                         now.getTimeInMillis()*(1/60000))
-                         && (Reserved.get(i).getFinishtime().getTimeInMillis()> now.getTimeInMillis() ))
+		 if(Reserved.get(i) != null)
 		 {
-			 temp[pointer++] = NotAvailable.get(i).getSpot();
+			 temp[pointer++] = Reserved.get(i).getSpot();
 		 }
 	    }
 	    
@@ -166,8 +175,9 @@ public class Garage implements Serializable {
 	return temp; 
     }
     
-    public int[] getAvailable(int[] unavailable)
+    public int[] getAvailable()
     {
+        int[] unavailable = getUnavailableSpots();
         int[] available = new int[maxSpots];
         
         for(int i = 0; i < maxSpots; i++)

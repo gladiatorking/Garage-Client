@@ -888,7 +888,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb1 = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;addReservationParkingSpot.removeAllItems();&#xd;&#xa;int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());&#xd;&#xa;for(int i = 0; i &lt; availableSpots2.length; i++)&#xd;&#xa;{&#xd;&#xa;addReservationParkingSpot.addItem(availableSpots2[i]);&#xd;&#xa;}&#xd;&#xa;"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Garage gdb1 = AccessDatabase.readGarageDB();&#xd;&#xa;&#xd;&#xa;addReservationParkingSpot.removeAllItems();&#xd;&#xa;int [] availableSpots2 = gdb1.getAvailable();&#xd;&#xa;for(int i = 0; i &lt; availableSpots2.length; i++)&#xd;&#xa;{&#xd;&#xa;addReservationParkingSpot.addItem(availableSpots2[i]);&#xd;&#xa;}&#xd;&#xa;"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="Houre">

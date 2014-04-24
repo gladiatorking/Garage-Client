@@ -91,7 +91,7 @@ public class CustomerIn extends javax.swing.JFrame {
         Garage gdb1 = AccessDatabase.readGarageDB();
 
         available.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        int [] availableSpots2 = gdb1.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
             available.addItem(availableSpots2[i]);
@@ -167,7 +167,7 @@ public class CustomerIn extends javax.swing.JFrame {
         Garage gdb2 = AccessDatabase.readGarageDB();
 
         available1.removeAllItems();
-        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
+        int [] availableSpots = gdb2.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
             available1.addItem(availableSpots[i]);
@@ -350,7 +350,7 @@ public class CustomerIn extends javax.swing.JFrame {
         Garage gdb2 = AccessDatabase.readGarageDB();
 
         available1.removeAllItems();
-        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
+        int [] availableSpots = gdb2.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
         available1.addItem(availableSpots[i]);
@@ -389,7 +389,7 @@ public class CustomerIn extends javax.swing.JFrame {
        Garage gdb1 = AccessDatabase.readGarageDB();
 
         available.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        int [] availableSpots2 = gdb1.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
         available.addItem(availableSpots2[i]);
@@ -428,26 +428,24 @@ public class CustomerIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        Garage gdb1 = AccessDatabase.readGarageDB();
+        Garage gdb = AccessDatabase.readGarageDB();
 
         available.removeAllItems();
-        int [] availableSpots2 = gdb1.getAvailable(gdb1.getUnavailableSpots());
+        int [] availableSpots2 = gdb.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
             available.addItem(availableSpots2[i]);
         }
-        Garage gdb2 = AccessDatabase.readGarageDB();
 
         available1.removeAllItems();
-        int [] availableSpots = gdb2.getAvailable(gdb2.getUnavailableSpots());
+        int [] availableSpots = gdb.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
-        available1.addItem(availableSpots[i]);
+            available1.addItem(availableSpots[i]);
         }
         
-        Garage gdb3 = AccessDatabase.readGarageDB();
         reserved.removeAllItems();
-        for(ParkingSession a : gdb3.getReserved())
+        for(ParkingSession a : gdb.getReserved())
         {
             reserved.addItem(a.toString());
         }
