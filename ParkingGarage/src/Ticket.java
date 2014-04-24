@@ -9,12 +9,13 @@
  * @author fokken
  */
 public class Ticket extends javax.swing.JFrame {
-
+    public static String ticket1;
     /**
      * Creates new form Ticket
      */
     public Ticket() {
         initComponents();
+        
     }
 
     /**
@@ -26,18 +27,31 @@ public class Ticket extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ticket = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(ticket)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 345, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
+
+        ticket.setText(ticket1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,6 +84,8 @@ public class Ticket extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        ticket1 = args[0];
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ticket().setVisible(true);
@@ -78,5 +94,7 @@ public class Ticket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField ticket;
     // End of variables declaration//GEN-END:variables
 }

@@ -398,14 +398,22 @@ public class CustomerIn extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       UserDataBase udb = AccessDatabase.readUserDB();
         Garage gdb = AccessDatabase.readGarageDB();
+        
         for(RegisteredUser a : udb.users)
         {
             if(a.username.equals(jTextField1.getText()))
             {
                 if(a.getPassword().equals(jPasswordField1.getText()))
                 {
-                 
-                 AccessDatabase.writeGarageDB(gdb);  
+                    for(int i = 0; i<gdb.getReserved().size();i++)
+                    {
+                        if(reserved.getSelectedItem().toString().equals(gdb.getReserved().get(i).toString()))
+                        {
+                            String [] info = new String[1];
+                            info[0] = gdb.getReserved().get(i).toString();
+                            Ticket.main(info); 
+                        }
+                    }
                 }
             }
         }
@@ -415,6 +423,7 @@ public class CustomerIn extends javax.swing.JFrame {
         {
         reserved.addItem(a.toString());
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
