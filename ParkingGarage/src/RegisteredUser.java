@@ -22,6 +22,7 @@ public class RegisteredUser extends Users{
 	private String make;
 	private String model;
         private int bill;
+        private int time;
 	
 	public RegisteredUser(
 		String fname, 
@@ -60,6 +61,7 @@ public class RegisteredUser extends Users{
 		this.make = make;
 		this.model = model;
                 this.bill = 0;
+                this.time = 0;
 	}
 	
 	public String getEmail()
@@ -76,6 +78,42 @@ public class RegisteredUser extends Users{
 	{
 		return username;
 	}
+        
+        public int getBill()
+        {
+            return bill;
+        }
+        
+        public int getHours()
+        {
+            return time;
+        }
+        
+        public void setHours(int hours)
+        {
+            time += hours;
+        }
+        
+        public void generateBill(int rate)
+        {
+            bill += time * rate;
+            time = 0;
+        }
+        public int payBill(int payment)
+        {
+            int temp = bill - payment;
+            
+            if(temp >= 0)
+            {
+                bill = temp;
+                return 0;
+            }
+            else
+            {
+                bill = 0;
+                return -temp; //returns the overage payment
+            }
+        }
 	
 	public String toString()
 	{
