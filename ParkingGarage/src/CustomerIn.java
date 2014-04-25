@@ -340,20 +340,21 @@ public class CustomerIn extends javax.swing.JFrame {
                 if(a.getPassword().equals(jPasswordField1.getText()))
                 {
                  ParkingSession newSpot= new ParkingSession(Integer.parseInt(available1.getSelectedItem().toString()),
-                jTextField1.getText());
+                    jTextField1.getText());
+                 
                  gdb.addCurrentSpot(newSpot); 
+                 
                  AccessDatabase.writeGarageDB(gdb);  
                 }
             }
         }
         licencePlate.setText(null);
-        Garage gdb2 = AccessDatabase.readGarageDB();
 
         available1.removeAllItems();
-        int [] availableSpots = gdb2.getAvailable();
+        int [] availableSpots = gdb.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
-        available1.addItem(availableSpots[i]);
+            available1.addItem(availableSpots[i]);
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -382,17 +383,22 @@ public class CustomerIn extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Garage gdb = AccessDatabase.readGarageDB();
+        
         ParkingSession newSpot= new ParkingSession(Integer.parseInt(available.getSelectedItem().toString()),
                 licencePlate.getText());
+        
         gdb.addCurrentSpot(newSpot);
+        
         AccessDatabase.writeGarageDB(gdb);
-       Garage gdb1 = AccessDatabase.readGarageDB();
+       
+        Garage gdb1 = AccessDatabase.readGarageDB();
 
+        
         available.removeAllItems();
         int [] availableSpots2 = gdb1.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
-        available.addItem(availableSpots2[i]);
+            available.addItem(availableSpots2[i]);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 

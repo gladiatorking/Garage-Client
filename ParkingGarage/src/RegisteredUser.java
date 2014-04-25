@@ -89,6 +89,18 @@ public class RegisteredUser extends Users{
             return time;
         }
         
+        public String billToString()
+        {
+            String output = "";
+            
+            output += "********************\n";
+            output += "User: " + username + "\n";
+            output += "Email: " + email + "\n";
+            output += "Bill: " + (bill/100) + "\n";
+            
+            return output;
+        }
+        
         public void setHours(int hours)
         {
             time += hours;

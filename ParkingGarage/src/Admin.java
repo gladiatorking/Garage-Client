@@ -99,12 +99,14 @@ public class Admin extends javax.swing.JFrame {
         removeReservationList = new javax.swing.JComboBox();
         jButton5 = new javax.swing.JButton();
         removeReservationMessage = new javax.swing.JTextField();
-        billingPane = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        billingPane = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        billInfo = new javax.swing.JEditorPane();
 
         jInternalFrame1.setVisible(true);
 
@@ -658,41 +660,6 @@ public class Admin extends javax.swing.JFrame {
 
         exitTab.addTab("Remove Reservation", removeReservationPane);
 
-        jLabel22.setText("Generates and sends bills to registered users.");
-
-        jButton4.setText("Generate Bills");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout billingPaneLayout = new javax.swing.GroupLayout(billingPane);
-        billingPane.setLayout(billingPaneLayout);
-        billingPaneLayout.setHorizontalGroup(
-            billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(billingPaneLayout.createSequentialGroup()
-                .addGroup(billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(billingPaneLayout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel22))
-                    .addGroup(billingPaneLayout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jButton4)))
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
-        billingPaneLayout.setVerticalGroup(
-            billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(billingPaneLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel22)
-                .addGap(28, 28, 28)
-                .addComponent(jButton4)
-                .addContainerGap(231, Short.MAX_VALUE))
-        );
-
-        exitTab.addTab("Billing", billingPane);
-
         jButton6.setText("Log Out of Administration Panel");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -729,6 +696,47 @@ public class Admin extends javax.swing.JFrame {
         );
 
         exitTab.addTab("Exit", jPanel1);
+
+        jLabel22.setText("Generates and sends bills to registered users.");
+
+        jButton4.setText("Generate Bills");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(billInfo);
+
+        javax.swing.GroupLayout billingPaneLayout = new javax.swing.GroupLayout(billingPane);
+        billingPane.setLayout(billingPaneLayout);
+        billingPaneLayout.setHorizontalGroup(
+            billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(billingPaneLayout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addGroup(billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addGroup(billingPaneLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jButton4)))
+                .addContainerGap(193, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billingPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        billingPaneLayout.setVerticalGroup(
+            billingPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(billingPaneLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel22)
+                .addGap(28, 28, 28)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+        );
+
+        exitTab.addTab("Billing", billingPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -858,6 +866,15 @@ public class Admin extends javax.swing.JFrame {
         {
             i.generateBill(1050);
         }
+        
+        String receiptList = "";
+        
+        for(RegisteredUser i : udb.users)
+        {
+            receiptList += i.billToString();
+        }
+        
+        billInfo.setText(receiptList);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -961,6 +978,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField addUserMessage;
     private javax.swing.JPanel addUserPane;
     private javax.swing.JTextField address;
+    private javax.swing.JEditorPane billInfo;
     private javax.swing.JPanel billingPane;
     private javax.swing.JTextField city;
     private javax.swing.JTextField creditCard;
@@ -1008,6 +1026,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lname;
     private javax.swing.JTextField make;
     private javax.swing.JTextField model;

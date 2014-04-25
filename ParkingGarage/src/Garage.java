@@ -35,7 +35,7 @@ public class Garage implements Serializable {
             {
                 return false;
             }
-        }
+         }
         for(ParkingSession b : Reserved)
         {
             if(b.getSpot() == newspot.getSpot()&& b.getFinishtime().getTimeInMillis()> 
@@ -123,7 +123,7 @@ public class Garage implements Serializable {
             int counter2;
             Calendar now = Calendar.getInstance();
             
-            if(Reserved.size() != 0)
+            if(!Reserved.isEmpty() || !NotAvailable.isEmpty())
             {
                 counter1 = 0;
                 counter2 = 0;
