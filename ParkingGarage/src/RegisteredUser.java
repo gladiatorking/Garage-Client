@@ -80,32 +80,50 @@ public class RegisteredUser extends Users{
                 this.bill = 0;
                 this.time = 0;
 	}
-	
+	/**
+         * accessor of Email
+         * @return email
+         */
 	public String getEmail()
 	{
 		return email;
 	}
-	
+	/**
+         * accessor of PlateNumber
+         * @return plateNumber
+         */
 	public String getPlateNumber()
 	{
 		return plateNumber;
 	}
-	
+	/**
+         * accessor of getUsername
+         * @return username
+         */
 	public String getUsername()
 	{
 		return username;
 	}
-        
+        /**
+         * accessor of getBill
+         * @return bill
+         */
         public int getBill()
         {
             return bill;
         }
-        
+        /**
+         * accessor of getHours
+         * @return time
+         */
         public int getHours()
         {
             return time;
         }
-        
+        /**
+         * Returns bill as a String
+         * @return output 
+         */
         public String billToString()
         {
             String output = "";
@@ -117,17 +135,29 @@ public class RegisteredUser extends Users{
             
             return output;
         }
-        
+        /**
+         * sets hours
+         * @param hours 
+         */
         public void setHours(int hours)
         {
             time += hours;
         }
-        
+        /**
+         * generates a bill using a rate
+         * @param rate 
+         */
         public void generateBill(int rate)
         {
+            
             bill += time * rate;
             time = 0;
         }
+        /**
+         * pay bills that returns the payment in a int
+         * @param payment
+         * @return temp
+         */
         public int payBill(int payment)
         {
             int temp = bill - payment;
@@ -143,7 +173,10 @@ public class RegisteredUser extends Users{
                 return -temp; //returns the overage payment
             }
         }
-	
+	/**
+         * toString method
+         * @return String
+         */
 	public String toString()
 	{
 		return super.toString()

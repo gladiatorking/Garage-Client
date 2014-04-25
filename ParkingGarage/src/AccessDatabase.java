@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 public class AccessDatabase {
 	static String garagedbLc = "garage.db";
 	static String userdbLc = "user.db";
-	
+	/**
+         * initialize Database
+         */
 	public static void InitDBs()
 	{
 		try
@@ -59,7 +61,10 @@ public class AccessDatabase {
 			System.err.println("Error intializing garage db.\n" + e);
 		}
 	}
-	
+	/**
+         * reads user database
+         * @return UserDataBase
+         */
 	public static UserDataBase readUserDB()
 	{
 		try
@@ -87,7 +92,10 @@ public class AccessDatabase {
 			return null;
 		}
 	}
-	
+	/**
+         * writes to the userdatabase
+         * @param udb 
+         */
 	public static void writeUserDB(UserDataBase udb)
 	{
 		try
@@ -111,7 +119,10 @@ public class AccessDatabase {
 			System.err.println("Error prepping the file output stream.\n" + e);
 		}
 	}
-        
+        /**
+         * reads The Garage database
+         * @return Garage
+         */
         public static Garage readGarageDB()
 	{
 		try
@@ -139,7 +150,10 @@ public class AccessDatabase {
 			return null;
 		}
 	}
-        
+        /**
+         * writes to GarageDatabase
+         * @param gdb 
+         */
         public static void writeGarageDB(Garage gdb)
 	{
 		try

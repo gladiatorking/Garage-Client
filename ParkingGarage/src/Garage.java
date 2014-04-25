@@ -18,15 +18,27 @@ public class Garage implements Serializable {
     public ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
     public ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
     private String user;
-    
+    /**
+     * accessor for Reserved
+     * @return Reserved
+     */
     public ArrayList<ParkingSession> getReserved()
     {
         return Reserved;
     }
+    /**
+     * accessor for maxSpots
+     * @return maxSpots
+     */
     public int getMaxSpots()
     {
         return maxSpots;
     }
+    /**
+     * checks to see if the spot is available
+     * @param newspot
+     * @return true if  available
+     */
     public boolean spotCheck(ParkingSession newspot)
     {
         for(ParkingSession a : NotAvailable)
@@ -48,7 +60,11 @@ public class Garage implements Serializable {
         return true;
         
     }
-    
+    /**
+     * adds spot to not available
+     * @param newspot
+     * @return 
+     */
     
     public boolean addCurrentSpot(ParkingSession newspot)
     {
@@ -59,7 +75,11 @@ public class Garage implements Serializable {
         }
       return false;      
     }
-    
+    /**
+     * adds reservation spot
+     * @param newReservation
+     * @return true if it successuflly added
+     */
     public boolean addReserved(ParkingSession newReservation)
     {
         for(int a = 0; a<Reserved.size(); a++)
@@ -75,7 +95,14 @@ public class Garage implements Serializable {
         }
         Reserved.add(newReservation);
         return true;
-        }
+    }
+    /**
+     * removes reservation
+     * before means that it is before the reservation time.
+     * @param res
+     * @param before
+     * @return true if successful
+     */
     public boolean removeReservation(ParkingSession res,boolean before)
     {
         Calendar current = Calendar.getInstance();
@@ -90,9 +117,13 @@ public class Garage implements Serializable {
             return true;
         }
     }
-    
-	public boolean makeAvailable(String user)
-	{
+    /**
+     * takes in user string and takes the spot out of NotAvailable
+     * @param user
+     * @return true if successful
+     */
+    public boolean makeAvailable(String user)
+    {
             for(ParkingSession a : NotAvailable)
 		if(a.getUser().equals(user))
                 {
@@ -100,8 +131,11 @@ public class Garage implements Serializable {
                     return true;
                 }
             return false;
-	}
-    
+    }
+    /**
+     * returns Array of spots that are unavailable at that time
+     * @return temp
+     */
     public int[] getUnavailableSpots()
     {
 	    //NotAvailable
@@ -167,7 +201,10 @@ public class Garage implements Serializable {
 	    
 	return temp; 
     }
-    
+    /**
+     * returns array of spots that are available
+     * @return tempavail
+     */
     public int[] getAvailable()
     {
         int[] unavailable = getUnavailableSpots();
