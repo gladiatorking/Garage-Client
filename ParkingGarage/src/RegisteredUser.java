@@ -23,7 +23,24 @@ public class RegisteredUser extends Users{
 	private String model;
         private int bill;
         private int time;
-	
+	/**
+         * RegisteredUser Constructor
+         * @param fname
+         * @param lname
+         * @param creditCard
+         * @param securityCode
+         * @param expirationDate
+         * @param address
+         * @param city
+         * @param state
+         * @param zipCode
+         * @param username
+         * @param password
+         * @param email
+         * @param make
+         * @param model
+         * @param plateNumber 
+         */
 	public RegisteredUser(
 		String fname, 
 		String lname, 

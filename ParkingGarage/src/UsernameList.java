@@ -15,11 +15,17 @@ public class UsernameList {
 	static String[] usernames;
 
 	
-	
+	/**
+         * initialize usernames
+         */
 	public static void initUsernames()
 	{
 		UsernameList.usernames = new String[0];
 	}
+        /**
+         * adds a username
+         * @param username 
+         */
 	public static void addUsername(String username)
 	{
 		
@@ -39,7 +45,10 @@ public class UsernameList {
 			UsernameList.usernames[i] = temp[i];
 		}
 	}
-	
+	/**
+         * removes username
+         * @param name 
+         */
 	public static void removeUsername(String name)
 	{
 		ArrayList<String>list = new ArrayList<>(Arrays.asList(name));
@@ -54,28 +63,4 @@ public class UsernameList {
 		
 	}
 	
-	public static String getUsernameList()
-	{
-		String output = "";
-		int width = 3;
-		int currentWidth = 1;
-		
-		for(int i = 0; i < UsernameList.usernames.length; i++)
-		{
-			if (currentWidth > 0 && currentWidth < 3)
-			{
-				output += i + " " + UsernameList.usernames[i] + "\t"; 
-				
-				currentWidth++;
-			}
-			else if(currentWidth == 3)
-			{
-				output += "\n";
-				currentWidth = 1;
-			}
-		}
-		
-		
-		return output;
-	}
 }
