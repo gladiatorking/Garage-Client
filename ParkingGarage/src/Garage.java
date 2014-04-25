@@ -115,8 +115,8 @@ public class Garage implements Serializable {
     public boolean removeReservation(ParkingSession res,boolean before)
     {
         Calendar current = Calendar.getInstance();
-        if(res.getStartingtime().getTimeInMillis()
-                < ((current.getTimeInMillis() *(1/3600000))+24)&& before)
+        if((res.getStartingtime().getTimeInMillis()
+                < (current.getTimeInMillis() *(1/3600000))+24)&& before)
                 {
                    return false;
                 }

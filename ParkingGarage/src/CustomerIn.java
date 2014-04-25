@@ -436,7 +436,7 @@ public class CustomerIn extends javax.swing.JFrame {
                 }
             }
         }
-        
+        AccessDatabase.writeGarageDB(gdb);
         reservedParkingPassword.setText(null);
         reservedParkingUser.setText(null);
         reserved.removeAllItems();
