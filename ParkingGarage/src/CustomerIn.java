@@ -54,9 +54,9 @@ public class CustomerIn extends javax.swing.JFrame {
         reserved = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        reservedParkingUser = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        reservedParkingPassword = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -277,8 +277,8 @@ public class CustomerIn extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                    .addComponent(jPasswordField2)))
+                                    .addComponent(reservedParkingUser, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                                    .addComponent(reservedParkingPassword)))
                             .addComponent(jLabel8))
                         .addGap(0, 408, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -293,11 +293,11 @@ public class CustomerIn extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reservedParkingUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reservedParkingPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -408,9 +408,9 @@ public class CustomerIn extends javax.swing.JFrame {
         
         for(RegisteredUser a : udb.users)
         {
-            if(a.username.equals(jTextField1.getText()))
+            if(a.username.equals(reservedParkingUser.getText()))
             {
-                if(a.getPassword().equals(jPasswordField1.getPassword()))
+                if(a.getPassword().equals(reservedParkingPassword.getPassword()))
                 {
                     for(int i = 0; i<gdb.getReserved().size();i++)
                     {
@@ -418,17 +418,22 @@ public class CustomerIn extends javax.swing.JFrame {
                         {
                             String [] info = new String[1];
                             info[0] = gdb.getReserved().get(i).toString();
-                            Ticket.main(info); 
+                           
+                            gdb.addCurrentSpot(gdb.getReserved().get(i));
+                            gdb.removeReservation(gdb.getReserved().get(i), false);
+                            
+                            Ticket ticket = new Ticket(info);
+                            ticket.setVisible(true);
                         }
                     }
                 }
             }
         }
-        Garage gdb3 = AccessDatabase.readGarageDB();
+        
         reserved.removeAllItems();
-        for(ParkingSession a : gdb3.getReserved())
+        for(ParkingSession a : gdb.getReserved())
         {
-        reserved.addItem(a.toString());
+            reserved.addItem(a.toString());
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -516,12 +521,12 @@ public class CustomerIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField licencePlate;
     private javax.swing.JComboBox reserved;
+    private javax.swing.JPasswordField reservedParkingPassword;
+    private javax.swing.JTextField reservedParkingUser;
     // End of variables declaration//GEN-END:variables
 }

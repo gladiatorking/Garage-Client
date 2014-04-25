@@ -86,16 +86,9 @@ public class Garage implements Serializable {
                 }
         else
         {
-            for(ParkingSession a: Reserved)
-            {
-                if(res.equals(a))
-                {
-                    Reserved.remove(a);
-                    return true;
-                }
-            }
+            Reserved.remove(res);
+            return true;
         }
-        return false;
     }
     
 	public boolean makeAvailable(String user)
