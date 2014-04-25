@@ -138,13 +138,15 @@ public class AdminLogin extends javax.swing.JFrame {
 		{
 			if(pass.getText().equals("4321"))
 			{
-				pass.setText("");
-                                empID.setText("");
+				pass.setText(null);
+                                empID.setText(null);
+                                
                                 (new Admin()).setVisible(true);
 				return;
 			}
 		}
 		
+                
 		jLabel4.setText("Invalid Login Attempt");
         }//GEN-LAST:event_loginButtonActionPerformed
 
