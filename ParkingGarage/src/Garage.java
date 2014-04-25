@@ -15,13 +15,20 @@ import java.util.Calendar;
  */
 public class Garage implements Serializable {
     private int maxSpots = 50;
-    public ArrayList<ParkingSession> NotAvailable = new ArrayList<>(maxSpots);
-    public ArrayList<ParkingSession> Reserved = new ArrayList<>(maxSpots);
+    public ArrayList<ParkingSession> NotAvailable;
+    public ArrayList<ParkingSession> Reserved;
     private String user;
     /**
      * accessor for Reserved
      * @return Reserved
      */
+    
+    public Garage()
+    {
+        NotAvailable = new ArrayList<>(maxSpots);
+        Reserved = new ArrayList<>(maxSpots);
+    }
+    
     public ArrayList<ParkingSession> getReserved()
     {
         return Reserved;
@@ -70,7 +77,9 @@ public class Garage implements Serializable {
     {
         if(spotCheck(newspot))
         {
-            NotAvailable.add(newspot.getSpot()-1, newspot);
+
+                NotAvailable.add( newspot);
+
             return true;
         }
       return false;      
@@ -93,7 +102,7 @@ public class Garage implements Serializable {
             return false;
         }  
         }
-        Reserved.add(newReservation);
+        Reserved.add( newReservation);
         return true;
     }
     /**

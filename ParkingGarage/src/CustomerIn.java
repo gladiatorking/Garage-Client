@@ -353,7 +353,10 @@ public class CustomerIn extends javax.swing.JFrame {
         int [] availableSpots = gdb.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
-            available1.addItem(availableSpots[i]);
+            if(availableSpots[i] != 0)
+            {
+                available1.addItem(availableSpots[i]);
+            }
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -399,7 +402,10 @@ public class CustomerIn extends javax.swing.JFrame {
         int [] availableSpots2 = gdb1.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
-            available.addItem(availableSpots2[i]);
+            if(availableSpots2[i] != 0)
+            {
+                available.addItem(availableSpots2[i]);
+            }
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -448,14 +454,20 @@ public class CustomerIn extends javax.swing.JFrame {
         int [] availableSpots2 = gdb.getAvailable();
         for(int i = 0; i < availableSpots2.length; i++)
         {
-            available.addItem(availableSpots2[i]);
+            if(availableSpots2[i] != 0)
+            {
+                available.addItem(availableSpots2[i]);
+            }
         }
 
         available1.removeAllItems();
         int [] availableSpots = gdb.getAvailable();
         for(int i = 0; i < availableSpots.length; i++)
         {
-            available1.addItem(availableSpots[i]);
+            if(availableSpots[i] != 0)
+            {
+                available1.addItem(availableSpots[i]);
+            }
         }
         
         reserved.removeAllItems();
